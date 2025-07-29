@@ -1,0 +1,80 @@
+void main() {
+  double accountBalance = 1000.0;
+
+  print("*** Welcome to Simple ATM Simulation ***");
+  print("Initial Balance: \$${accountBalance.toStringAsFixed(2)}");
+  
+  double depositAmount1 = 200.0;
+  print("\nSimulating Deposit of \$${depositAmount1.toStringAsFixed(2)}:");
+  accountBalance = deposit(accountBalance, depositAmount1);
+  
+  double depositAmount2 = 50.50;
+  print("\nSimulating Deposit of \$${depositAmount2.toStringAsFixed(2)}:");
+  accountBalance = deposit(accountBalance, depositAmount2);
+
+  double withdrawAmount1 = 300.0;
+  print("\nSimulating Withdrawal of \$${withdrawAmount1.toStringAsFixed(2)}:");
+  if (withdrawAmount1 > 0) {
+    if (withdrawAmount1 <= accountBalance) {
+      accountBalance = withdraw(accountBalance, withdrawAmount1);
+    } else {
+      print("Insufficient balance. Cannot withdraw \$${withdrawAmount1.toStringAsFixed(2)}.");
+    }
+  } else {
+    print("Invalid withdrawal amount. Must be a positive number.");
+  }
+
+  double withdrawAmount2 = 1500.0;
+  print("\nSimulating Withdrawal of \$${withdrawAmount2.toStringAsFixed(2)} (expecting insufficient funds):");
+  if (withdrawAmount2 > 0) {
+    if (withdrawAmount2 <= accountBalance) {
+      accountBalance = withdraw(accountBalance, withdrawAmount2);
+    } else {
+      print("Insufficient balance. Cannot withdraw \$${withdrawAmount2.toStringAsFixed(2)}.");
+    }
+  } else {
+    print("Invalid withdrawal amount. Must be a positive number.");
+  }
+
+  double withdrawAmount3 = -100.0;
+  print("\nSimulating Withdrawal of \$${withdrawAmount3.toStringAsFixed(2)} (expecting invalid amount):");
+  if (withdrawAmount3 > 0) {
+    if (withdrawAmount3 <= accountBalance) {
+      accountBalance = withdraw(accountBalance, withdrawAmount3);
+    } else {
+      print("Insufficient balance. Cannot withdraw \$${withdrawAmount3.toStringAsFixed(2)}.");
+    }
+  } else {
+    print("Invalid withdrawal amount. Must be a positive number.");
+  }
+
+
+  print("\nSimulation complete.");
+  print("Final Balance: \$${accountBalance.toStringAsFixed(2)}");
+}
+
+double deposit(double currentBalance, double amount) {
+  if (amount <= 0) {
+    print("Invalid deposit amount. Must be a positive number.");
+    return currentBalance;
+  }
+  double newBalance = currentBalance + amount;
+  print("Deposited: \$${amount.toStringAsFixed(2)}");
+  print("New Balance: \$${newBalance.toStringAsFixed(2)}");
+  return newBalance;
+}
+
+double withdraw(double currentBalance, double amount) {
+  if (amount <= 0) {
+    print("Invalid withdrawal amount. Must be a positive number.");
+    return currentBalance;
+  }
+  if (amount > currentBalance) {
+    print("Insufficient balance. Cannot withdraw \$${amount.toStringAsFixed(2)}.");
+    return currentBalance;
+  }
+  double newBalance = currentBalance - amount;
+  print("Withdrawn: \$${amount.toStringAsFixed(2)}");
+  print("New Balance: \$${newBalance.toStringAsFixed(2)}");
+  return newBalance;
+}

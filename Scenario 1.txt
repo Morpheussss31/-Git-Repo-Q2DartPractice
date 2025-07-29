@@ -1,0 +1,35 @@
+void main() {
+  double test1 = 85.5;
+  double test2 = 92.0;
+  double test3 = 78.5;
+
+  double average_gr;
+  String letterGrade;
+  String status;
+
+  average_gr = (test1 + test2 + test3) / 3;
+
+  if (average_gr >= 90) {
+    letterGrade = 'A';
+  } else if (average_gr >= 85) {
+    letterGrade = 'B';
+  } else if (average_gr >= 80) {
+    letterGrade = 'C';
+  } else if (average_gr >= 75) {
+    letterGrade = 'D';
+  } else if (average_gr >= 70) {
+    letterGrade = 'F';
+  } else { 
+    letterGrade = 'FAIL';
+  }
+  
+  status = average_gr >= 60 ? "PASSED!" : "FAILED!";
+
+  
+  print("Test 1: $test1");
+  print("Test 2: $test2");
+  print("Test 3: $test3");
+  print("Average Grade: ${average_gr.toStringAsFixed(2)}");
+  print("Status: $status 🎉");
+  print("Letter Grade: $letterGrade");
+}
