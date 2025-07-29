@@ -77,4 +77,4 @@ double withdraw(double currentBalance, double amount) {
   print("Withdrawn: \$${amount.toStringAsFixed(2)}");
   print("New Balance: \$${newBalance.toStringAsFixed(2)}");
   return newBalance;
-}
+}.
